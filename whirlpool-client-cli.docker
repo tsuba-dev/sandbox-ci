@@ -1,0 +1,5 @@
+FROM maven:latest
+
+COPY whirlpool-client-cli /src
+
+WORKDIR /src

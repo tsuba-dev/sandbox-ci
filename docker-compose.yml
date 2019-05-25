@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  thali:
+    build:
+      context: .
+      dockerfile: thali.docker
+
+    image: thali
+    entrypoint: ./gradlew clean install
+
+    volumes:
+     - maven-repo:/root
+
+  whirlpool-client:
+    build:
+      context: .
+      dockerfile: whirlpool-client.docker
+
+    image: whirlpool-client
+    entrypoint: mvn clean install -Dmaven.test.skip=true
+
+    volumes:
+     - maven-repo:/root
+
+  whirlpool-client-cli:
+    build:
+      context: .
+      dockerfile: whirlpool-client-cli.docker
+
+    image: whirlpool-client-cli
+    entrypoint: mvn clean install -Dmaven.test.skip=true
+
+    volumes:
+     - maven-repo:/root
+
+  export:
+    image: busybox
+
+    volumes:
+     - maven-repo:/export
+
+
+volumes:
+  # share maven local repository between containers
+  maven-repo:

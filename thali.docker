@@ -1,0 +1,5 @@
+FROM thyrlian/android-sdk:latest
+
+COPY Tor_Onion_Proxy_Library /src
+
+WORKDIR /src
