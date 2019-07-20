@@ -1,5 +1,16 @@
 # Changelog
 
+## [v0.7.2] 2019-07-20
+
+- Nodl compatibility
+- Code cleanup
+
+Submodules
+
+- Tor_Onion_Proxy_Library (v0.0.3-2)
+- whirlpool-client (0.21.6)
+- whirlpool-client-cli (0.7.2)
+
 ## [v0.7.1] 2019-07-12
 
 - Tor stabilization
@@ -46,8 +57,9 @@ Submodules
 - whirlpool-client-cli (0.6.3)
 
 ## Versions
-- [Unreleased](https://github.com/tsuba-dev/whirlpool-smithy/compare/v0.7.1...HEAD)
+- [Unreleased](https://github.com/tsuba-dev/whirlpool-smithy/compare/v0.7.2...HEAD)
 - [v0.6.3](https://github.com/tsuba-dev/whirlpool-smithy/compare/v0.0.0...v0.6.3)
 - [v0.6.4](https://github.com/tsuba-dev/whirlpool-smithy/compare/v0.6.3...v0.6.4)
 - [v0.7.0](https://github.com/tsuba-dev/whirlpool-smithy/compare/v0.6.4...v0.7.0)
 - [v0.7.1](https://github.com/tsuba-dev/whirlpool-smithy/compare/v0.7.0...v0.7.1)
+- [v0.7.2](https://github.com/tsuba-dev/whirlpool-smithy/compare/v0.7.1...v0.7.2)
