@@ -1,0 +1,52 @@
+version: 2
+jobs:
+  build:
+    machine:
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: "Pull Submodules"
+          command: git submodule update --init --recursive
+      - run: make
+      - run: make export
+      - persist_to_workspace:
+          root: .
+          paths: ./target
+
+  publish-github-release:
+    docker:
+      - image: cibuilds/github:0.10
+    steps:
+      - attach_workspace:
+          at: ~/build
+      - checkout
+      - run:
+          name: "Publish Release on GitHub"
+          command: |
+            VERSION=$(git describe --abbrev=0)
+            VERSION_LONG=$(git describe)
+            if [ "$VERSION" == "$VERSION_LONG" ]; then
+              ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ~/build/target/
+            else
+              ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -draft ${VERSION_LONG} ~/build/target/
+            fi
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: develop
+            tags:
+              only: /v.*/
+      - publish-github-release:
+          requires:
+            - build
+          filters:
+            branches:
+              only: develop
+            tags:
+              only: /v.*/

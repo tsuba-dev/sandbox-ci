@@ -1,35 +1,45 @@
-version: '3.7'
+version: '3'
 
 services:
-  build-thali:
-    image: thyrlian/android-sdk:latest
+  thali:
+    build:
+      context: .
+      dockerfile: thali.docker
 
-    working_dir: /src
-    entrypoint: ./gradlew install
+    image: thali
+    entrypoint: ./gradlew clean install
 
     volumes:
      - maven-repo:/root
-     - ./Tor_Onion_Proxy_Library:/src
 
-  build-whirlpool-client:
-    image: maven:latest
+  whirlpool-client:
+    build:
+      context: .
+      dockerfile: whirlpool-client.docker
 
-    working_dir: /src
+    image: whirlpool-client
     entrypoint: mvn clean install -Dmaven.test.skip=true
 
     volumes:
      - maven-repo:/root
-     - ./whirlpool-client:/src
 
-  build-whirlpool-client-cli:
-    image: maven:latest
+  whirlpool-client-cli:
+    build:
+      context: .
+      dockerfile: whirlpool-client-cli.docker
 
-    working_dir: /src
+    image: whirlpool-client-cli
     entrypoint: mvn clean install -Dmaven.test.skip=true
 
     volumes:
      - maven-repo:/root
-     - ./whirlpool-client-cli:/src
+
+  export:
+    image: busybox
+
+    volumes:
+     - maven-repo:/export
+
 
 volumes:
   # share maven local repository between containers
