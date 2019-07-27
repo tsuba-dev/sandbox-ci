@@ -16,3 +16,9 @@ docker-compose up build-thali
 ```bash
 docker-compose up build-whirlpool-client
 ```
+
+### Whirlpool Client CLI
+
+```bash
+docker-compose up build-whirlpool-client-cli
+```

@@ -21,6 +21,16 @@ services:
      - maven-repo:/root
      - ./whirlpool-client:/src
 
+  build-whirlpool-client-cli:
+    image: maven:latest
+
+    working_dir: /src
+    entrypoint: mvn clean install -Dmaven.test.skip=true
+
+    volumes:
+     - maven-repo:/root
+     - ./whirlpool-client-cli:/src
+
 volumes:
   # share maven local repository between containers
   maven-repo:
