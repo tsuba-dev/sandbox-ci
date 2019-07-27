@@ -1,0 +1,3 @@
+[submodule "Tor_Onion_Proxy_Library"]
+	path = Tor_Onion_Proxy_Library
+	url = git@github.com:tsuba-dev/Tor_Onion_Proxy_Library.git

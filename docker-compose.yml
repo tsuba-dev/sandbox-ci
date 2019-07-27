@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  build-thali:
+    image: thyrlian/android-sdk:latest
+
+    working_dir: /src
+    entrypoint: ./gradlew install
+
+    volumes:
+     - maven-repo:/root
+     - ./Tor_Onion_Proxy_Library:/src
+
+volumes:
+  # share maven local repository between containers
+  maven-repo:
