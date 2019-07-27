@@ -22,3 +22,11 @@ docker-compose up build-whirlpool-client
 ```bash
 docker-compose up build-whirlpool-client-cli
 ```
+
+## Makefile
+
+- Use `make` to build all submodules
+- Use `make clean` to cleanup build
+- Use `make rebuild` to have a fresh build
+- Use `make build-thali` to build only `com.msopentech.thali`
+- Use `make build-whirlpool-client-cli` to build cli while developing
