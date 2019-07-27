@@ -10,3 +10,9 @@ Use docker images for automation repeatability and Continuous Integration.
 ```bash
 docker-compose up build-thali
 ```
+
+### Whirlpool Client
+
+```bash
+docker-compose up build-whirlpool-client
+```
