@@ -1,0 +1,9 @@
+[submodule "Tor_Onion_Proxy_Library"]
+	path = Tor_Onion_Proxy_Library
+	url = git@github.com:tsuba-dev/Tor_Onion_Proxy_Library.git
+[submodule "whirlpool-client"]
+	path = whirlpool-client
+	url = git@github.com:tsuba-dev/whirlpool-client.git
+[submodule "whirlpool-client-cli"]
+	path = whirlpool-client-cli
+	url = git@github.com:tsuba-dev/whirlpool-client-cli.git
